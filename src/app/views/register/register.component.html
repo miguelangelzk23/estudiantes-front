@@ -1,0 +1,27 @@
+<div class="flex items-center justify-center">
+  <section hlmCard class="w-1/2 ">
+    <div hlmCardHeader>
+      <h3 hlmCardTitle class="text-start">Registro Estudiante</h3>
+      <p hlmCardDescription>Completa el siguiente formulario para realizar tu registro</p>
+    </div>
+    <form [formGroup]="RegisterForm" (ngSubmit)="OnSubmit()">
+    <div hlmCardContent class="grid grid-cols-2 gap-4">
+
+      <input class="w-full" formControlName="Name" hlmInput placeholder='Nombre' type='text' />
+      <input class="w-full" formControlName="LastName" hlmInput placeholder='Apellido' type='text' />
+      <input class="w-full" formControlName="DocumentNumber" hlmInput placeholder='Numero de documento' type='number' />
+      <input class="w-full" formControlName="Email" hlmInput placeholder='email' type='email' />
+      <input class="w-full" formControlName="Password" hlmInput placeholder='contraseña' type='password' />
+      <input class="w-full" formControlName="ConfirmPassword" hlmInput placeholder='Confirmar contraseña' type='password' />
+
+    </div>
+    <div hlmCardFooter class="flex items-center justify-center">
+      <button hlmBtn class="w-1/2"[disabled]="RegisterForm.invalid" >Registrarse</button>
+    </div>
+  </form>
+
+<hlm-toaster />
+<!-- <button hlmBtn (click)="showToast()">Show Toast</button> -->
+  </section>
+</div>
+

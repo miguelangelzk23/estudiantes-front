@@ -1,0 +1,23 @@
+<div class="flex items-center justify-center">
+  <section hlmCard class="w-1/2 ">
+    <div hlmCardHeader>
+      <h3 hlmCardTitle class="text-start">Seleccionar Materias</h3>
+      <p hlmCardDescription>Por favor seleccione tres materias para continuar</p>
+    </div>
+    <form a></form>
+    @if(MostrarListadoMateiras.length > 0){
+      <div hlmCardContent class="grid grid-cols-2 gap-4" >
+        @for (item of  MostrarListadoMateiras; track  item.MateriaNombre) {
+          <label class="flex items-center" hlmLabel>
+            <hlm-checkbox class="mr-2"  formControlName="Name"  [disabled]="DisableChecks" (changed)="onCheckboxChange(item.IdMateria, $event)" />
+           {{item.MateriaNombre}}
+        </label>
+        }
+      </div>
+    }
+
+    <div hlmCardFooter class="flex items-center justify-end">
+      <button hlmBtn class="w-1/2" [disabled]="DisableButton" (click)="OnSubmit()">Continuar</button>
+    </div>
+  </section>
+</div>

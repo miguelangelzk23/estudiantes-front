@@ -1,0 +1,52 @@
+<div class="flex items-center justify-center">
+  <section hlmCard class="w-1/2 ">
+    <div hlmCardHeader>
+      <h3 hlmCardTitle class="text-start">Mis Materias</h3>
+      <p hlmCardDescription>Selecciona una materia</p>
+    </div>
+
+    <div hlmCardContent >
+
+      <brn-select  class="inline-block" placeholder="Selelecciona...">
+        <hlm-select-trigger class="w-56">
+          <hlm-select-value />
+        </hlm-select-trigger>
+        <hlm-select-content>
+          @for (item of ListaMaterias; track item.Id) {
+          <hlm-option (click)="ChangeMateria(item.Id)" value="{{item.Id}}">{{item.Nombre}}</hlm-option>
+        }
+        </hlm-select-content>
+      </brn-select>
+
+    </div>
+    @if (materiaSeleccionada) {
+      <div hlmCardContent >
+        <h6 class="font-bold">Detalles de la materia</h6>
+        <hr class="mb-3">
+        <div class="w-8/12">
+          <span class="font-semibold "> Profesor: </span>  <span>{{materiaSeleccionada.NombreProfesor}}</span><br>
+          <span class="font-semibold "> Descripcion: </span> <span>{{materiaSeleccionada.Descripcion}}</span>
+        </div>
+
+      </div>
+      <hlm-table class="w-10/12 mx-2">
+        <hlm-caption>Estudiantes en tu misma clase</hlm-caption>
+        <hlm-trow>
+          <hlm-th class="w-52">Estudiantes</hlm-th>
+        </hlm-trow>
+        @for (estudiante of materiaSeleccionada.NombresEstudiantes; track estudiante) {
+          <hlm-trow>
+            <hlm-td  class="font-medium w-52">{{ estudiante }}</hlm-td>
+          </hlm-trow>
+        }
+      </hlm-table>
+
+    }
+
+
+    <div hlmCardFooter>
+
+    </div>
+  </section>
+</div>
+
